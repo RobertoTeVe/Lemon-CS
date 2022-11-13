@@ -1,2 +1,2 @@
 # Lemon-CS
-CS Modules from LemonCode's Bootcamp
+CSharp Modules from LemonCode's Bootcamp
