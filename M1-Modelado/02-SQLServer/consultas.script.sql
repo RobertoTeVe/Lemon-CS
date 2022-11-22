@@ -97,11 +97,21 @@ FROM [LemonMusic].[dbo].Playlist P
 
 /* Listar las pistas que no están en ninguna playlist */
 /**/
+/*SELECT DISTINCT T.Name, PT.TrackId
+FROM [LemonMusic].[dbo].Track T
+ INNER JOIN [LemonMusic].[dbo].PlaylistTrack PT
+	ON PT.TrackId IS NOT NULL
+		WHERE PT.PlaylistId IS NULL
+*/
 
 
 /* Listar los artistas que no tienen album */
 /**/
-
+SELECT A.Name, T.AlbumId
+FROM [LemonMusic].[dbo].Artist A
+	INNER JOIN [LemonMusic].[dbo].Track T
+		ON T.Composer = A.Name
+			WHERE T.AlbumId IS NULL
 
 /* Listar los artistas con el número de albums que tienen */
 /**/
