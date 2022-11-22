@@ -85,7 +85,15 @@ LEFT JOIN [LemonMusic].[dbo].PlaylistTrack PT
 
 /* Listar las playlist que tienen alguna canción del artista Queen, junto con la cantidad que tienen */
 /**/
-
+SELECT P.Name, COUNT(T.Composer) as 'N.Canciones'
+FROM [LemonMusic].[dbo].Playlist P
+	INNER JOIN [LemonMusic].[dbo].PlaylistTrack PT
+	ON P.PlaylistId = PT.PlaylistId
+		INNER JOIN [LemonMusic].[dbo].Track T
+		ON PT.TrackId = T.TrackId
+			WHERE T.Composer LIKE '%Queen%'
+				GROUP BY P.Name
+	
 
 /* Listar las pistas que no están en ninguna playlist */
 /**/
