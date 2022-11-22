@@ -74,22 +74,14 @@ LEFT JOIN [LemonMusic].[dbo].Playlist P
  
 /* Listar las playlist (sin repetir ninguna) que tienen alguna canción de AC/DC */
 /**/
---SELECT *
---FROM [LemonMusic].[dbo].PlaylistTrack PT
---LEFT JOIN [LemonMusic].[dbo].Track T
---	ON PT.TrackId = T.TrackId
---		WHERE T.Composer LIKE '%AC/DC%'
---UNION ALL
---SELECT *
---FROM dbo.PlaylistTrack PLT
+SELECT DISTINCT P.Name
+FROM [LemonMusic].[dbo].Playlist P
+LEFT JOIN [LemonMusic].[dbo].PlaylistTrack PT
+	ON PT.TrackId = P.PlaylistId
+	LEFT JOIN [LemonMusic].[dbo].Track T
+	ON T.TrackId = PT.TrackId
+		WHERE T.Composer LIKE '%AC/DC%'
 
---SELECT *
---FROM [LemonMusic].[dbo].PlaylistTrack PT
---LEFT JOIN [LemonMusic].[dbo].Playlist P
---	ON PT.PlaylistId = P.PlaylistId
---	LEFT JOIN dbo.Track T
---	ON T.TrackId = PT.TrackId
---		WHERE T.Composer LIKE '%AC/DC%'
 
 /* Listar las playlist que tienen alguna canción del artista Queen, junto con la cantidad que tienen */
 /**/
