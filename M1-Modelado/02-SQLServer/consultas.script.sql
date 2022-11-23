@@ -107,17 +107,21 @@ FROM [LemonMusic].[dbo].Track T
 
 /* Listar los artistas que no tienen album */
 /**/
-SELECT A.Name, T.AlbumId
-FROM [LemonMusic].[dbo].Artist A
-	INNER JOIN [LemonMusic].[dbo].Track T
-		ON T.Composer = A.Name
-			WHERE T.AlbumId IS NULL
+SELECT Ar.Name
+FROM [LemonMusic].[dbo].Album Al
+	RIGHT JOIN [LemonMusic].[dbo].Artist Ar
+		ON Al.ArtistId = Ar.ArtistId
+			WHERE Al.AlbumId IS NULL
 
 /* Listar los artistas con el número de albums que tienen */
 /**/
-
-
 /* Para saber si está bien, asegurate que algunos de los artistas de la query anterior (artistas sin album) aparecen en este listado con 0 albums */
-/**/
+SELECT Ar.Name, COUNT (Al.AlbumId)
+FROM [LemonMusic].[dbo].Album Al
+	RIGHT JOIN [LemonMusic].[dbo].Artist Ar
+		ON Al.ArtistId = Ar.ArtistId
+		GROUP BY Ar.Name
+
+
 
 
