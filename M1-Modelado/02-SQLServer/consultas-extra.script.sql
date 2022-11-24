@@ -32,4 +32,3 @@ FROM [LemonMusic].[dbo].InvoiceLine IL
 
 /* Listar los artistas que aún no han vendido ninguna pista */
 /**/
-
