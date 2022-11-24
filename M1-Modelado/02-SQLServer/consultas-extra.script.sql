@@ -24,7 +24,11 @@ FROM [LemonMusic].[dbo].InvoiceLine IL
 
 /* Listar las pistas que aún no han sido compradas por nadie */
 /**/
-
+SELECT *
+FROM [LemonMusic].[dbo].InvoiceLine IL
+	RIGHT JOIN  [LemonMusic].[dbo].Track T
+		ON IL.TrackId = T.TrackId
+		WHERE IL.TrackId IS NULL
 
 /* Listar los artistas que aún no han vendido ninguna pista */
 /**/
