@@ -14,7 +14,13 @@ FROM [LemonMusic].[dbo].InvoiceLine IL
 
 /* Listar los artistas más comprados */
 /**/
-
+SELECT COUNT(T.Composer) as Compras, T.Composer
+FROM [LemonMusic].[dbo].InvoiceLine IL
+	INNER JOIN  [LemonMusic].[dbo].Track T
+	ON IL.TrackId = T.TrackId
+		WHERE T.Composer IS NOT NULL
+			GROUP BY T.Composer
+			ORDER BY COUNT (*) DESC
 
 /* Listar las pistas que aún no han sido compradas por nadie */
 /**/
