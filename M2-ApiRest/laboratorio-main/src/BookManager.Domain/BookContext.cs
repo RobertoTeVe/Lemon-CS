@@ -8,15 +8,10 @@ namespace BookManager.Domain
 {
     public class BookContext : DbContext
     {
-        private const string ConnectionString = "Server=localhost;Database=Books;user=sa;password=Lem0nCode!;Encrypt=False";
+        public BookContext(DbContextOptions<BookContext> options) : base(options) { }
 
-        public DbSet<BookEntity> Books { get; set; }
-        public DbSet<AuthorEntity> Authors { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(ConnectionString);
-        }
+        public DbSet<BookEntity> Books { get; set; } = null;
+        public DbSet<AuthorEntity> Authors { get; set; } = null;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
