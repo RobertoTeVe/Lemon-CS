@@ -1,5 +1,7 @@
-﻿using BookManager.Application.Models;
+﻿using Azure;
+using BookManager.Application.Models;
 using BookManager.Domain.Entities;
+using System.Globalization;
 
 namespace BookManager.Application
 {
@@ -14,6 +16,11 @@ namespace BookManager.Application
 
         public async Task<int> CreateAuthor(Author author)
         {
+            if (author.CountryCode.Trim().Length != 2) return -1;
+            RegionInfo countryCode;
+            try { countryCode = new RegionInfo(author.CountryCode); }
+            catch { return -1; }
+
             var authorEntity = new AuthorEntity
             {
                 Name = author.Name,

@@ -16,10 +16,10 @@ namespace BookManager.Extensions
                 {
                     Title = mainAssemblyName,
                     Version = "v1",
-                    Description = "Chat Sample",
+                    Description = "Book Manager DB",
                     Contact = new OpenApiContact
                     {
-                        Name = "Diego Martin"
+                        Name = "Roberto Alonso"
                     }
                 });
 
