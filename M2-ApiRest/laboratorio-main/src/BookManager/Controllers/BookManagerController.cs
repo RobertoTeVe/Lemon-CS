@@ -7,20 +7,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace BookManager.Controllers
 {
     [Route("api")]
-    public class BookManagerController 
+    public class BookManagerController
         : ControllerBase
     {
         private readonly BookCommandServices _bookCommandServices;
         public BookManagerController(BookCommandServices bookCommandServices)
         {
             _bookCommandServices = bookCommandServices;
-        }
-
-
-        [HttpGet]
-        public IActionResult Health()
-        {
-            return Ok();
         }
 
 
@@ -43,6 +36,14 @@ namespace BookManager.Controllers
             return Ok(modifiedBookId);
         }
 
+        [HttpGet("books")]
+        public async Task<IActionResult> GetAllBooks()
+        {
+            var allBooks = await _bookCommandServices.GetAllBooks("");
+
+            return Ok(allBooks);
+        }
+
 
         [HttpPost("authors")]
         public async Task<IActionResult> CreateAuthor([FromBody] Author author)
@@ -54,6 +55,19 @@ namespace BookManager.Controllers
             if (id == -1) return StatusCode(400);
 
             return Ok(id);
+        }
+    }
+
+    [Route("api/[controller]")]
+    public class HealthController
+        : ControllerBase
+    {
+        public HealthController() { }
+
+        [HttpGet]
+        public IActionResult Health()
+        {
+            return Ok();
         }
     }
 }

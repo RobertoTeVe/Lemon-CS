@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging.Abstractions;
+using Newtonsoft.Json;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Serialization;
 
 namespace BookManager.Application
 {
@@ -65,7 +67,7 @@ namespace BookManager.Application
 
             if (dbBook == null) return -1;
 
-            if(title == null && description == null) return -1;
+            if (title == null && description == null) return -1;
 
             if (title != null) dbBook.Title = title;
             if (description != null) dbBook.Description = description;
@@ -76,5 +78,13 @@ namespace BookManager.Application
             return id;
         }
 
+        public async Task<string> GetAllBooks(string returnJson)
+        {
+            returnJson = String.Empty;
+
+            await _bookDbContext.Books.ForEachAsync(book => { returnJson += JsonConvert.SerializeObject(book); });
+
+            return returnJson;
+        }
     }
 }
