@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookManager.Application", "src\BookManager.Application\BookManager.Application.csproj", "{4B4CDA34-82E5-4ABD-9C72-7123AE9A989C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookManager", "src\BookManager\BookManager.csproj", "{61FE4B3C-5D7D-432B-BD55-577EB919761A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97AD308B-0A14-4BAA-9982-0602D121C9C5} = {97AD308B-0A14-4BAA-9982-0602D121C9C5}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{777B0749-9ABF-47E8-A819-6AA84E72D5D9}"
 EndProject
@@ -18,6 +21,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookManager.Application.UnitTests", "test\BookManager.Application.UnitTests\BookManager.Application.UnitTests.csproj", "{35A196FD-3258-4313-9503-E96A121910D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookManager.FunctionalTests", "test\BookManager.FunctionalTests\BookManager.FunctionalTests.csproj", "{D133B147-BBE5-471A-A4B3-1C88DBE3F2EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookManager.Persistence.SqlServer", "src\BookManager.Persistence.SqlServer\BookManager.Persistence.SqlServer.csproj", "{97AD308B-0A14-4BAA-9982-0602D121C9C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B4CDA34-82E5-4ABD-9C72-7123AE9A989C} = {4B4CDA34-82E5-4ABD-9C72-7123AE9A989C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +57,10 @@ Global
 		{D133B147-BBE5-471A-A4B3-1C88DBE3F2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D133B147-BBE5-471A-A4B3-1C88DBE3F2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D133B147-BBE5-471A-A4B3-1C88DBE3F2EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97AD308B-0A14-4BAA-9982-0602D121C9C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97AD308B-0A14-4BAA-9982-0602D121C9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97AD308B-0A14-4BAA-9982-0602D121C9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97AD308B-0A14-4BAA-9982-0602D121C9C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +72,7 @@ Global
 		{FA32F7F4-E104-4704-8E8F-CDCB7FF1D157} = {777B0749-9ABF-47E8-A819-6AA84E72D5D9}
 		{35A196FD-3258-4313-9503-E96A121910D4} = {777B0749-9ABF-47E8-A819-6AA84E72D5D9}
 		{D133B147-BBE5-471A-A4B3-1C88DBE3F2EC} = {777B0749-9ABF-47E8-A819-6AA84E72D5D9}
+		{97AD308B-0A14-4BAA-9982-0602D121C9C5} = {2441F1E9-A8A7-4677-A249-1318A1D96991}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22FA7689-97C6-4E67-A34F-AE0644065F34}

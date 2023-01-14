@@ -1,13 +1,15 @@
-﻿using BookManager.Domain.Entities;
+﻿using BookManager.Application;
+using BookManager.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookManager.Domain
+namespace BookManager.Persistence.SqlServer
 {
     public class BookDbContext 
-        : DbContext
+        : DbContext, IBookDbContext
 
     {
-        public BookDbContext(DbContextOptions<BookDbContext> options) : base(options) { }
+        public BookDbContext(DbContextOptions<BookDbContext> options) 
+            : base(options) { }
 
         public DbSet<BookEntity> Books { get; set; }/* = null;*/
         public DbSet<AuthorEntity> Authors { get; set; }/* = null;*/

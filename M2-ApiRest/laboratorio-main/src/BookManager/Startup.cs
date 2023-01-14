@@ -1,8 +1,8 @@
 ﻿using BookManager.Extensions;
-using BookManager.Domain;
+using BookManager;
 using BookManager.Application;
 using Microsoft.EntityFrameworkCore;
-
+using BookManager.Persistence.SqlServer;
 
 namespace BookManager
 {

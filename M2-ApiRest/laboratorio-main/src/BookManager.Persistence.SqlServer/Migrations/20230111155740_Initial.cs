@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BookManager.Domain.Migrations
+namespace BookManager.Persistence.SqlServer.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
