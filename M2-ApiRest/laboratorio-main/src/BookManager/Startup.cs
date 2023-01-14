@@ -21,7 +21,7 @@ namespace BookManager
                 _configuration.GetValue<string>("ConnectionStrings:BooksDataBase");
 
             services
-                .AddDbContext<BookContext>(options =>
+                .AddDbContext<BookDbContext>(options =>
                 {
                     options.UseSqlServer(booksConnectionString);
                 })

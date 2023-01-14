@@ -11,9 +11,9 @@ namespace BookManager.Application
 {
     public class BookCommandServices
     {
-        private readonly BookContext _bookContext;
+        private readonly BookDbContext _bookContext;
 
-        public BookCommandServices(BookContext bookContext)
+        public BookCommandServices(BookDbContext bookContext)
         {
             _bookContext = bookContext;
         }
