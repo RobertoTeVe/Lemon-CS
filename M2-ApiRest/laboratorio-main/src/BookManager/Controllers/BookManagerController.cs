@@ -38,6 +38,9 @@ namespace BookManager.Controllers
 
             var id = await _bookCommandServices.CreateAuthor(author);
 
+            // '-1' is returned when the countrycode is not valid.
+            if (id == -1) return StatusCode(400);
+
             return Ok(id);
         }
     }

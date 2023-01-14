@@ -16,8 +16,8 @@ namespace BookManager.Application
 
         public async Task<int> CreateAuthor(Author author)
         {
-            if (author.CountryCode.Trim().Length != 2) return -1;
             RegionInfo countryCode;
+
             try { countryCode = new RegionInfo(author.CountryCode); }
             catch { return -1; }
 
