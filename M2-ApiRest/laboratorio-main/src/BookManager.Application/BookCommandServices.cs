@@ -1,21 +1,15 @@
 ﻿using BookManager.Application.Models;
-using BookManager.Domain;
 using BookManager.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookManager.Application
 {
     public class BookCommandServices
     {
-        private readonly BookDbContext _bookContext;
+        private readonly IBookDbContext _bookDbContext;
 
-        public BookCommandServices(BookDbContext bookContext)
+        public BookCommandServices(IBookDbContext bookContext)
         {
-            _bookContext = bookContext;
+            _bookDbContext = bookContext;
         }
 
         public async Task<int> CreateAuthor(Author author)
@@ -28,10 +22,26 @@ namespace BookManager.Application
                 CountryCode = author.CountryCode
             };
 
-            _bookContext.Authors.Add(authorEntity);
-            await _bookContext.SaveChangesAsync();
+            _bookDbContext.Authors.Add(authorEntity);
+            await _bookDbContext.SaveChangesAsync();
 
             return authorEntity.Id;
+        }
+
+        public async Task<int> CreateBook(Book book)
+        {
+            var bookEntity = new BookEntity
+            {
+                Title = book.Title,
+                PublishedOn = book.PublishedOn,
+                Description= book.Description,
+                AuthorId= book.AuthorId
+            };
+
+            _bookDbContext.Books.Add(bookEntity);
+            await _bookDbContext.SaveChangesAsync();
+
+            return bookEntity.Id;
         }
 
     }

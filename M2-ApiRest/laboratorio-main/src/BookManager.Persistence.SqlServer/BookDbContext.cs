@@ -7,8 +7,7 @@ namespace BookManager.Domain
         : DbContext
 
     {
-        public BookDbContext(DbContextOptions<BookDbContext> options) 
-            : base(options) { }
+        public BookDbContext(DbContextOptions<BookDbContext> options) : base(options) { }
 
         public DbSet<BookEntity> Books { get; set; }/* = null;*/
         public DbSet<AuthorEntity> Authors { get; set; }/* = null;*/

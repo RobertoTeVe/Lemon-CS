@@ -1,5 +1,6 @@
 ﻿using BookManager.Extensions;
 using BookManager.Domain;
+using BookManager.Application;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -21,10 +22,12 @@ namespace BookManager
                 _configuration.GetValue<string>("ConnectionStrings:BooksDataBase");
 
             services
+                .AddTransient<BookCommandServices>()
                 .AddDbContext<BookDbContext>(options =>
                 {
                     options.UseSqlServer(booksConnectionString);
                 })
+                .AddScoped<IBookDbContext, BookDbContext>()
                 .AddOpenApi()
                 .AddControllers();
         }
