@@ -4,7 +4,8 @@ import { createAction } from "@reduxjs/toolkit";
 import { gamesReceived, gameReceived, setError, setLoading, gameDeleted } from "../reducers/games";
 import { AppDispatch, AppThunk } from "../store"
 
-const ApiURL = process.env.REACT_APP_API_URL;
+// const ApiURL = process.env.REACT_APP_API_URL;
+const ApiURL = "https://lemonazureapi.azurewebsites.net/api/";
 
 export const getGamesActionToolkit = createAction(
     'games',
