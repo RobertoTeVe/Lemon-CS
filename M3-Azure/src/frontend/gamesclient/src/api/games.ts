@@ -6,7 +6,7 @@ const baseURL = 'https://lemonazureapi.azurewebsites.net/api/';
 
 export class GamesApi {
     async get(): Promise<IGame[]> {
-        const url = `${baseURL}/tests`;
+        const url = `${baseURL}/games`;
         return (await apiFetch(ApiMethods.GET, url)).execute<IGame[]>();
     }
 }
