@@ -1,4 +1,6 @@
-﻿using Azure.Storage.Queues;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage;
+using Azure.Storage.Queues;
 using Lemoncode.Azure.Api.Data;
 using Lemoncode.Azure.Api.Helpers;
 using Lemoncode.Azure.Api.Services;
@@ -121,8 +123,8 @@ namespace Lemoncode.Azure.Api.Controllers
                 return NotFound();
             }
 
-            //context.Game.Remove(game);
-            //await context.SaveChangesAsync();
+            context.Game.Remove(game);
+            await context.SaveChangesAsync();
 
             return NoContent();
         }
